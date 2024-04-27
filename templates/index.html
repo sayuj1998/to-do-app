@@ -3,24 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <title>Todo App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
 </head>
 <body>
     <h1>To-dos List</h1>
-    <ul>
-        {% for todo in todos %}
-            <li>
-                <form action="{{ url_for('check', index=loop.index0) }}" method="post">
-                    <input type="checkbox" name="done" {% if todo['done'] %} checked {% endif %} onchange="this.form.submit()">
-                </form>
-                <span {% if todo['done'] %} style="text-decoration: line-through" {% endif %}>{{ todo['task'] }}</span>
-                <a href="{{ url_for('edit', index=loop.index0) }}">Edit</a>
-                <a href="{{ url_for('delete', index=loop.index0) }}">Delete</a>
-            </li>
-        {% endfor %}
-    </ul>
-    <form action="{{ url_for('add') }}" method="post">
-        <input type="text" name="todo">
-        <button type="submit">Add Todo</button>
+    <form action="{{ url_for('home') }}" class="input-container" method="POST">
+        <input type="text" placeholder="Enter Todo" id="input-todo" name="todo_name">
+        <button id="add-todo">+</button>
     </form>
+    <h2>My Tasks</h2>
+    <div class="todo-container">
+        {% for item in items %}
+        <div class="todo">
+            <span {% if item.checked %} style="text-decoration: line-through;" {% endif %}>{{ item.name }}</span>
+            <div class="actions">
+                <form action="{{ url_for('checked_todo', todo_id=item.id) }}" method="POST">
+                    <input type="checkbox" {% if item.checked %}checked{% endif %} onchange="this.form.submit()">
+                </form>
+                <form action="{{ url_for('delete_todo', todo_id=item.id) }}" method="POST">
+                    <button>Delete</button>
+                </form>
+                <form action="{{ url_for('edit_todo', todo_id=item.id) }}" method="POST">
+                    <input type="text" name="new_name" placeholder="Edit Todo">
+                    <button class="edit-button">Edit</button>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 </body>
 </html>
