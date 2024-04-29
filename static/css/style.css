@@ -9,6 +9,7 @@ h2 {
 }
 
 .input-container {
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,19 +17,30 @@ h2 {
 }
 
 #input-todo {
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 20px;
+    background-color: #fff;
+    transition: all 0.3s ease;
+    outline: none; /* Remove default focus outline */
     width: 250px;
-    height: 25px;
-    font-size: 1.25rem;
 }
 
 #add-todo {
-    height: 40px;
-    width: 40px;
-    border-radius: 20px;
     border: none;
+    border-radius: 20px;
+    padding: 10px 30px;
+    font-size: 20px;
     background-color: #90EE90;
-    font-size: 1.5rem;
+    transition: all 0.3s ease;
     cursor: pointer;
+    outline: none;
+}
+
+#add-todo:hover {
+    background-color: #7ACD40;
+    box-shadow: 0 0 5px rgba(0, 128, 0, 0.5);
 }
 
 .todo-container {
@@ -65,7 +77,11 @@ h2 {
 }
 
 .actions > form > button.edit-button {
-    background-color: #90EE90;
+    background-color: #dc6624;
+}
+
+.actions > form > button.edit-button:hover {
+    background-color: #7ACD40;
 }
 
 .actions {
@@ -82,6 +98,47 @@ h2 {
 .todo input[type="checkbox"]:checked ~ p {
     text-decoration: line-through;
     color: #FF7F00;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.search-form {
+    position: relative;
+}
+
+.search-input {
+    border: 2px solid #ccc;
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-size: 19px;
+    transition: all 0.3s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #FF7F00;
+    box-shadow: 0 0 5px rgba(255, 127, 0, 0.5);
+}
+
+.search-button {
+    border: none;
+    background-color: #FF7F00;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 5px;
+}
+
+.search-button:hover {
+    background-color: #FFA500;
+    box-shadow: 0 0 5px rgba(255, 127, 0, 0.5);
 }
 
 
