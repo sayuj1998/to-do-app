@@ -1,8 +1,9 @@
 import pytest
 from app import app, db, Todo
+from flask.testing import FlaskClient
 
 @pytest.fixture
-def client():
+def client() -> FlaskClient:
     """Making test client for app"""
     app.config['TESTING'] = True
     with app.test_client() as client:
@@ -12,17 +13,17 @@ def client():
             db.session.remove()
             db.drop_all()
 
-def test_home(client):
+def test_home(client: FlaskClient) -> None:
     """Test if home page loads"""
     response = client.get('/')
     assert response.status_code == 200
 
-def test_add_todo(client):
+def test_add_todo(client: FlaskClient) -> None:
     """Test adding a new todo"""
     response = client.post("/home", data={"todo_name": "Test Todo"})
     assert response.status_code == 302
 
-def test_checked_todo(client):
+def test_checked_todo(client: FlaskClient) -> None:
     """Test toggling the checked box of the todo"""
     todo = Todo(description="Test Todo")
     db.session.add(todo)
@@ -33,7 +34,20 @@ def test_checked_todo(client):
     assert response.status_code == 302
     assert todo.checked == True
 
-def test_delete_todo(client):
+def test_edit_todo(client:FlaskClient) -> None:
+    """Test editing a todo"""
+    todo = Todo(description="Test Todo")
+    db.session.add(todo)
+    db.session.commit()
+
+    new_description = "Edited todo"
+    response = client.post(f"/edit/{todo.id}", data={"new_name": new_description})
+
+    assert response.status_code == 302
+    updated_todo = Todo.query.get(todo.id)
+    assert updated_todo.description == new_description
+
+def test_delete_todo(client:FlaskClient) -> None:
     """Test deleting a todo"""
     todo = Todo(description="Test Todo")
     db.session.add(todo)
@@ -44,7 +58,7 @@ def test_delete_todo(client):
     assert response.status_code == 302
     assert Todo.query.get(todo.id) is None
 
-def test_edit_delete_todos(client):
+def test_edit_delete_todos(client:FlaskClient) -> None:
     """Test adding, editing, checking and deleting multiple todos"""
     todos = []
     for i in range(10):
