@@ -14,9 +14,9 @@ def driver():
     options = Options()
     options.profile = os.environ.get("SELENIUM_FIREFOX_PROFILE", None)
 
+    options.add_argument("--headless")
+
     driver = webdriver.Firefox(options)
-    driver.set_window_position(0, 0)
-    driver.maximize_window()
 
     yield driver
     driver.close()

@@ -141,9 +141,26 @@ h2 {
     box-shadow: 0 0 5px rgba(255, 127, 0, 0.5);
 }
 
-.timestamp {
-    margin-right: -650px;
+.todo {
+    background-color: #555555;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    padding: 0px 10px;
+    font-size: 1.2rem;
+    position: relative;
 }
+
+.timestamp {
+    position: absolute;
+    top: 50%;
+    right: 400px;
+    transform: translateY(-50%);
+    color: #FF7F00;
+    font-size: 16px;
+}
+
 
 
 
