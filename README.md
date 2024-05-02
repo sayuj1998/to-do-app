@@ -1,3 +1,5 @@
+![Todo App](https://github.com/sayuj1998/to-do-app/assets/164384520/346af3de-9ebd-4863-9b9a-cb27194fa983)
+
 # **Todo App**
 This is a simple todo application built with Flask.
 
