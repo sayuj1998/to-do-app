@@ -1,3 +1,5 @@
+![screenshot](Todo App.png)
+
 # **Todo App**
 This is a simple todo application built with Flask.
 
@@ -53,6 +55,6 @@ pytest test_todo_app.py
 * 'app.py': Main Flask application file.
 * 'models.py': Defines the database models using SQLAlchemy.
 * 'frontend_tests.py': Frontend tests using Selenium.
-* 'test_todo_app.py': Backend tests using Selenium.
+* 'test_todo_app.py': Backend tests using Pytests.
 * 'index.html': HTML templates for the frontend.
 * 'style.css': CSS styling for the frontend.

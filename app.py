@@ -25,7 +25,7 @@ def home() -> Response:
             if todo_name:
                 db.session.add(Todo(description=todo_name))
                 db.session.commit()
-                return redirect(url_for("home"))  # Redirect after form submission
+                return redirect(url_for("home"))
             else:
                 return render_template("index.html", items=todos())
     return render_template("index.html", items=filtered_todos, search=search)
