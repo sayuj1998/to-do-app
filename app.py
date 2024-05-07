@@ -13,7 +13,6 @@ with app.app_context():
 
 @app.route("/", methods=["GET", "POST"])
 @app.route("/home", methods=["GET", "POST"])
-
 def home() -> Response:
     """Render home page with todos and search, add new todos and reload if todo name is empty"""
     search = request.args.get("search", "").strip()
