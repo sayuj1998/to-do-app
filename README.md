@@ -1,5 +1,3 @@
-![screenshot](Todo App.png)
-
 # **Todo App**
 This is a simple todo application built with Flask.
 
